@@ -1,28 +1,50 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>Electron Boilerplate</title>
   <link href="stylesheets/main.css" rel="stylesheet" type="text/css">
-</head>
-<body>
 
-  <div class="container">
-    <h1 id="greet"></h1>
+  <!-- Insert this line above script imports  -->
+  <script>
+    if (typeof module === 'object') {
+      window.module = module;
+      module = undefined;
+    }
+  </script>
+
+  <!-- normal script imports etc  -->
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+  <!-- Insert this line after script imports -->
+  <script>
+    if (window.module) module = window.module;
+  </script>
+
+  <script>
+    $(function() {
+      $("#draggable").draggable();
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container" id="draggable">
+    <h1>Electron Transparent Demo</h1>
     <p>
-      Welcome to <a href="http://electron.atom.io" class="js-external-link">Electron</a> app running on this magnificent <strong id="os"></strong> machine.
+      This div has a solid background so you cannot click through it. Please drag me around to prove it.
     </p>
     <p>
-      App author: <strong id="author"></strong>
+      When GPU acceleration is disabled with disableHardwareAcceleration() you can interact with other programs behind the transparent body of this Electron application.
     </p>
     <p>
-      Environment: <strong id="env"></strong>
-    </p>
-    <p>
-      Electron version: <strong id="electron-version"></strong>
+      Electron version: <strong id="electron-version"></strong><br>
+      OS: <strong id="os"></strong>
     </p>
   </div>
-
   <script src="app.js"></script>
 </body>
+
 </html>

@@ -23,8 +23,5 @@ const osMap = {
   linux: 'Linux',
 };
 
-document.querySelector('#greet').innerHTML = greet();
 document.querySelector('#os').innerHTML = osMap[process.platform];
-document.querySelector('#author').innerHTML = manifest.author;
-document.querySelector('#env').innerHTML = env.name;
 document.querySelector('#electron-version').innerHTML = process.versions.electron;

@@ -10,9 +10,13 @@ import { devMenuTemplate } from './menu/dev_menu_template';
 import { editMenuTemplate } from './menu/edit_menu_template';
 import createWindow from './helpers/window';
 
+app.disableHardwareAcceleration()
+
 // Special module holding environment variables which you declared
 // in config/env_xxx.json file.
 import env from './env';
+
+const electron = require('electron');
 
 const setApplicationMenu = () => {
   const menus = [editMenuTemplate];
@@ -33,20 +37,25 @@ if (env.name !== 'production') {
 app.on('ready', () => {
   setApplicationMenu();
 
+  const screen = require('electron').screen;
+  const display = screen.getPrimaryDisplay();
+
+  // const { width: screenWidth, height: screenHeight } = electron.screen.getPrimaryDisplay().workAreaSize;
+
   const mainWindow = createWindow('main', {
-    width: 1000,
-    height: 600,
+    width: display.width,
+    height: display.height,
+    frame: true,
+    transparent: true
   });
+
+  mainWindow.maximize();
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'app.html'),
     protocol: 'file:',
     slashes: true,
   }));
-
-  if (env.name === 'development') {
-    mainWindow.openDevTools();
-  }
 });
 
 app.on('window-all-closed', () => {
