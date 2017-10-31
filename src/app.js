@@ -25,3 +25,8 @@ const osMap = {
 
 document.querySelector('#os').innerHTML = osMap[process.platform];
 document.querySelector('#electron-version').innerHTML = process.versions.electron;
+
+document.getElementById("close-btn").addEventListener("click", function (e) {
+       var window = remote.getCurrentWindow();
+       window.close();
+  }); 

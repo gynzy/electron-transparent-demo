@@ -45,8 +45,9 @@ app.on('ready', () => {
   const mainWindow = createWindow('main', {
     width: display.width,
     height: display.height,
-    frame: true,
-    transparent: true
+    frame: false,
+    transparent: true,
+    alwaysOnTop: true
   });
 
   mainWindow.maximize();
@@ -56,6 +57,11 @@ app.on('ready', () => {
     protocol: 'file:',
     slashes: true,
   }));
+
+  // if (env.name === 'development') {
+  //   mainWindow.openDevTools();
+  // }
+
 });
 
 app.on('window-all-closed', () => {
