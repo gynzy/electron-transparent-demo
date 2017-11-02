@@ -15,6 +15,16 @@
       "node_modules/**/*",
       "package.json"
     ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32"
+          ]
+        }
+      ]
+    },
     "publish": null
   },
   "scripts": {

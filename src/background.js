@@ -40,13 +40,12 @@ app.on('ready', () => {
   const screen = require('electron').screen;
   const display = screen.getPrimaryDisplay();
 
-  // const { width: screenWidth, height: screenHeight } = electron.screen.getPrimaryDisplay().workAreaSize;
-
   const mainWindow = createWindow('main', {
     width: display.width,
     height: display.height,
     frame: false,
     transparent: true,
+    toolbar: false,
     alwaysOnTop: true
   });
 
